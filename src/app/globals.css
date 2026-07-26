@@ -1,26 +1,50 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-charcoal: #1f2937;
+  --color-charcoal-deep: #141a22;
+  --color-kraft: #8a5a34;
+  --color-kraft-dark: #6e4527;
+  --color-kraft-light: #b98652;
+  --color-steel: #378add;
+  --color-steel-dark: #1f5c96;
+  --color-steel-tint: #e6f1fb;
+  --color-sand: #f5f2ec;
+  --color-sand-deep: #eae1cf;
+  --color-green: #1d9e75;
+  --color-terracotta: #c9502c;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-charcoal: var(--color-charcoal);
+  --color-charcoal-deep: var(--color-charcoal-deep);
+  --color-kraft: var(--color-kraft);
+  --color-kraft-dark: var(--color-kraft-dark);
+  --color-kraft-light: var(--color-kraft-light);
+  --color-steel: var(--color-steel);
+  --color-steel-dark: var(--color-steel-dark);
+  --color-steel-tint: var(--color-steel-tint);
+  --color-sand: var(--color-sand);
+  --color-sand-deep: var(--color-sand-deep);
+  --color-green: var(--color-green);
+  --color-terracotta: var(--color-terracotta);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-display: var(--font-space-grotesk);
+  --font-body: var(--font-inter);
+  --font-mono: var(--font-ibm-plex-mono);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-sand);
+  color: var(--color-charcoal);
+  font-family: var(--font-body);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
