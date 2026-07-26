@@ -1,14 +1,14 @@
 import type { Award } from "./types";
 
-// PLACEHOLDER DATA — per docs/CLAUDE.md §9, replace with real awards before launch.
+// SAMPLE DATA — per docs/CLAUDE.md §9, replace with real awards before launch.
 
 export const awards: Award[] = [
   {
     slug: "sample-award-001",
-    name: "[SEED] Placeholder Industry Award",
-    issuingBody: "PLACEHOLDER — not a real issuing body",
-    year: 2022,
-    description: "PLACEHOLDER — not a real award.",
+    name: "[SEED] National Packaging Excellence Award",
+    issuingBody: "Sample data — e.g. National Chamber of Exporters",
+    year: 2023,
+    description: "Sample data — recognized for export carton design and quality consistency.",
     isSeedData: true,
   },
 ];

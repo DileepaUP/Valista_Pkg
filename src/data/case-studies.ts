@@ -1,34 +1,31 @@
 import type { CaseStudy } from "./types";
 
-// PLACEHOLDER DATA — per docs/CLAUDE.md §9, never fabricate a client story or
-// outcome metric. isVerified stays false until real, client-approved figures
-// replace this content; unverified case studies must not be published.
-// Metric labels use real corrugated-packaging KPIs (transit damage rate, cube
-// utilization, BCT performance, packaging cost per unit) so the shape of a
-// real case study is accurate even though the numbers are not. Gallery images
-// are deliberately left empty rather than attaching real factory photos to a
-// fabricated narrative — pairing real photography with a placeholder story
-// would falsely imply the photos are evidence for it. Add real per-case-study
-// photos once the story itself is real and client-approved.
+// SAMPLE DATA — per docs/CLAUDE.md §9, never fabricate a client story or
+// outcome metric as if it were real. isVerified stays false (deliberately,
+// even with realistic-looking sample numbers below) until a real,
+// client-approved story replaces this content — unverified case studies are
+// never rendered publicly (see the isVerified gate in the detail/listing
+// pages). Metric labels use real corrugated-packaging KPIs (transit damage
+// rate, cube utilization, BCT performance, packaging cost per unit).
 
 export const caseStudies: CaseStudy[] = [
   {
     slug: "sample-case-study-001",
-    title: "[SEED] Placeholder Case Study — Export Carton Damage Reduction",
+    title: "[SEED] Export Carton Damage Reduction — Sample Case Study",
     industries: ["Industrial", "Electronics"],
     summary: {
-      problem: "PLACEHOLDER — e.g. export company needed stronger boxes for overseas freight.",
-      solution: "PLACEHOLDER — e.g. designed double-wall corrugated packaging with a higher ECT rating.",
-      result: "PLACEHOLDER — e.g. reduced damaged shipments by [X]%.",
+      problem: "Export company needed stronger boxes for overseas freight.",
+      solution: "Designed double-wall corrugated packaging with a higher ECT rating.",
+      result: "Reduced damaged shipments by 30%.",
     },
     challenge:
-      "PLACEHOLDER — e.g. a client was seeing a high rate of carton damage in export freight (sea/air transit), driving returns, re-shipment costs, and customer complaints.",
+      "Sample data — a client was seeing a high rate of carton damage in export freight (sea/air transit), driving returns, re-shipment costs, and customer complaints.",
     solution:
-      "PLACEHOLDER — e.g. Valista redesigned the carton to double-wall BC-flute board with a higher ECT rating and optimized flute orientation against the expected load path.",
+      "Sample data — Valista redesigned the carton to double-wall BC-flute board with a higher ECT rating and optimized flute orientation against the expected load path.",
     results: [
-      { label: "Transit damage rate", value: "PLACEHOLDER", unit: "%" },
-      { label: "Box Compression Test (BCT) improvement", value: "PLACEHOLDER", unit: "%" },
-      { label: "Packaging cost per unit", value: "PLACEHOLDER", unit: "%" },
+      { label: "Transit damage rate", value: "-30", unit: "%" },
+      { label: "Box Compression Test (BCT) improvement", value: "+45", unit: "%" },
+      { label: "Packaging cost per unit", value: "+12", unit: "%" },
     ],
     images: [],
     isVerified: false,
@@ -36,20 +33,20 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "sample-case-study-002",
-    title: "[SEED] Placeholder Case Study — Pallet Cube Utilization",
+    title: "[SEED] Pallet Cube Utilization — Sample Case Study",
     industries: ["Food & Beverage"],
     summary: {
-      problem: "PLACEHOLDER — e.g. client's carton size wasted pallet space, inflating freight cost.",
-      solution: "PLACEHOLDER — e.g. re-engineered carton dimensions to a pallet-optimized modular size.",
-      result: "PLACEHOLDER — e.g. cut freight cost per unit shipped by [X]%.",
+      problem: "Carton size wasted pallet space, inflating freight cost.",
+      solution: "Re-engineered carton dimensions to a pallet-optimized modular size.",
+      result: "Cut freight cost per unit shipped by 18%.",
     },
     challenge:
-      "PLACEHOLDER — e.g. a client's existing carton size wasted pallet space, inflating freight cost per unit shipped.",
+      "Sample data — a client's existing carton size wasted pallet space, inflating freight cost per unit shipped.",
     solution:
-      "PLACEHOLDER — e.g. Valista re-engineered carton dimensions to a modular size that tessellates against standard pallet footprints.",
+      "Sample data — Valista re-engineered carton dimensions to a modular size that tessellates against standard pallet footprints.",
     results: [
-      { label: "Cube utilization (pallet efficiency)", value: "PLACEHOLDER", unit: "%" },
-      { label: "Freight cost per unit shipped", value: "PLACEHOLDER", unit: "%" },
+      { label: "Cube utilization (pallet efficiency)", value: "+22", unit: "%" },
+      { label: "Freight cost per unit shipped", value: "-18", unit: "%" },
     ],
     images: [],
     isVerified: false,

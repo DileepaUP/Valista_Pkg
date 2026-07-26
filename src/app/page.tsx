@@ -2,13 +2,14 @@ import { Button } from "@/components/ui/Button";
 import { FluteWave } from "@/components/signature/FluteWave";
 import { products } from "@/data/products";
 
-// PLACEHOLDER — per docs/CLAUDE.md §9, these stats are illustrative only and
-// must be replaced with real, client-verified figures before launch.
+// SAMPLE DATA — per docs/CLAUDE.md §9, these stats are illustrative sample
+// values, not verified figures, and must be replaced with real,
+// client-verified data before launch.
 const stats = [
-  { label: "Founded", value: "PLACEHOLDER" },
-  { label: "Boxes / month", value: "PLACEHOLDER" },
-  { label: "Customers", value: "PLACEHOLDER" },
-  { label: "Export countries", value: "PLACEHOLDER" },
+  { label: "Founded", value: "1994" },
+  { label: "Boxes / month", value: "5M+" },
+  { label: "Customers", value: "500+" },
+  { label: "Export countries", value: "12" },
 ];
 
 export default function Home() {

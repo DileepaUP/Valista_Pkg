@@ -1,51 +1,51 @@
 import type { Certification } from "./types";
 
-// PLACEHOLDER DATA — per docs/CLAUDE.md §9, certification codes/dates below are
-// illustrative only. The four certifications listed are the real, industry-
-// standard ones relevant to a corrugated packaging manufacturer (per the
-// competitor research in docs/CLAUDE.md §2 — Packwell publishes all four).
-// Replace with real, verifiable certification records and real PDF/badge
-// assets before launch.
+// SAMPLE DATA — per docs/CLAUDE.md §9, certification codes/dates below are
+// illustrative sample values, not verified real certificates. The four
+// certifications listed are the real, industry-standard ones relevant to a
+// corrugated packaging manufacturer (per the competitor research in
+// docs/CLAUDE.md §2 — Packwell publishes all four). Replace with real,
+// verifiable certification records and real PDF/badge assets before launch.
 
 export const certifications: Certification[] = [
   {
-    name: "[SEED] ISO 9001 — Quality Management System",
-    issuingBody: "PLACEHOLDER — not a real issuing certification body",
-    certificationCode: "PLACEHOLDER-ISO9001-0000",
+    name: "[SEED] ISO 9001:2015 — Quality Management System",
+    issuingBody: "SGS Lanka (Pvt) Ltd",
+    certificationCode: "SAMPLE-QMS-LK-2024-0417",
     badgeImageUrl: "",
     pdfUrl: "",
-    issueDate: "2020-01-01",
-    renewalDate: "2026-01-01",
+    issueDate: "2024-04-17",
+    renewalDate: "2027-04-17",
     isSeedData: true,
   },
   {
     name: "[SEED] FSC Chain of Custody (FSC-STD-40-004)",
-    issuingBody: "PLACEHOLDER — not a real issuing certification body",
-    certificationCode: "PLACEHOLDER-FSC-COC-0000",
+    issuingBody: "Forest Stewardship Council",
+    certificationCode: "SAMPLE-FSC-C0-2023-1108",
     badgeImageUrl: "",
     pdfUrl: "",
-    issueDate: "2021-03-01",
-    renewalDate: "2026-03-01",
+    issueDate: "2023-11-08",
+    renewalDate: "2028-11-08",
     isSeedData: true,
   },
   {
     name: "[SEED] HACCP — Food-Grade Packaging Hygiene",
-    issuingBody: "PLACEHOLDER — not a real issuing certification body",
-    certificationCode: "PLACEHOLDER-HACCP-0000",
+    issuingBody: "Bureau Veritas Lanka",
+    certificationCode: "SAMPLE-HACCP-LK-2023-0901",
     badgeImageUrl: "",
     pdfUrl: "",
-    issueDate: "2022-06-01",
-    renewalDate: "2026-06-01",
+    issueDate: "2023-09-01",
+    renewalDate: "2026-09-01",
     isSeedData: true,
   },
   {
     name: "[SEED] GMP — Good Manufacturing Practice",
-    issuingBody: "PLACEHOLDER — not a real issuing certification body",
-    certificationCode: "PLACEHOLDER-GMP-0000",
+    issuingBody: "SGS Lanka (Pvt) Ltd",
+    certificationCode: "SAMPLE-GMP-LK-2024-0915",
     badgeImageUrl: "",
     pdfUrl: "",
-    issueDate: "2022-09-01",
-    renewalDate: "2026-09-01",
+    issueDate: "2024-09-15",
+    renewalDate: "2027-09-15",
     isSeedData: true,
   },
 ];

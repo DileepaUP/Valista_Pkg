@@ -1,35 +1,38 @@
 import type { CompanyValue } from "./types";
 
-// PLACEHOLDER DATA — per docs/CLAUDE.md §9/§10, years in business, production
-// capacity, and customer/export figures are unverified and must be confirmed
-// with the client before launch. "Industries served" reuses the real INDUSTRIES
-// list already used for product/case-study filtering, since that's a genuine
-// fact about the business rather than a fabricated number.
+// SAMPLE DATA — per docs/CLAUDE.md §9/§10, these figures are illustrative
+// sample values, not verified real company facts. Replace with real,
+// client-approved figures before launch. Kept realistic-looking (rather than
+// literal "PLACEHOLDER" text) for demo/preview purposes, per explicit
+// instruction — but still not verified data.
 
 export const companyIntro = {
-  yearsInBusiness: "PLACEHOLDER",
-  productionCapacity: "PLACEHOLDER — e.g. boxes produced per month",
+  yearsInBusiness: "30+ Years",
+  productionCapacity: "5M+ boxes / month",
   summary:
-    "PLACEHOLDER — a short paragraph introducing Valista Packaging: what the company makes, who it serves, and what sets it apart. Replace with real, client-approved copy.",
+    "Valista Packaging designs and manufactures corrugated boxes and packaging solutions for e-commerce, food & beverage, industrial, and export customers. From standard shipping cartons to custom die-cut retail packaging, every product is built to a published technical spec — not just a photo and a price.",
 };
 
 export const missionStatement =
-  "PLACEHOLDER — replace with the company's real mission statement.";
+  "To manufacture reliable, technically-specified corrugated packaging that protects our customers' products in transit, backed by transparent data instead of guesswork.";
 
 export const visionStatement =
-  "PLACEHOLDER — replace with the company's real vision statement.";
+  "To be the corrugated packaging supplier that engineers and procurement teams trust because we publish real specs, not marketing copy.";
 
 export const companyValues: CompanyValue[] = [
   {
-    title: "PLACEHOLDER — e.g. Quality without shortcuts",
-    description: "PLACEHOLDER — replace with real, specific detail, not generic corporate language.",
+    title: "Quality without shortcuts",
+    description:
+      "Every production run is tested against ECT, burst strength, and BCT targets before it ships — not just visually inspected.",
   },
   {
-    title: "PLACEHOLDER — e.g. Transparency in specs",
-    description: "PLACEHOLDER — replace with real, specific detail, not generic corporate language.",
+    title: "Transparency in specs",
+    description:
+      "Flute type, board grade, and test ratings are published on every product page, so customers can specify with confidence before they call.",
   },
   {
-    title: "PLACEHOLDER — e.g. Responsible sourcing",
-    description: "PLACEHOLDER — replace with real, specific detail, not generic corporate language.",
+    title: "Responsible sourcing",
+    description:
+      "We work toward FSC-traceable fiber sourcing and recycled-content board where it meets the customer's strength requirements.",
   },
 ];

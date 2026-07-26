@@ -20,7 +20,19 @@ const columns = [
     links: [
       { href: "/products", label: "Browse Products" },
       { href: "/case-studies", label: "Case Studies" },
-      { href: "/sustainability", label: "Sustainability" },
+    ],
+  },
+  {
+    title: "Sustainability",
+    links: [
+      { href: "/sustainability", label: "Overview" },
+      { href: "/sustainability/eco-friendly-materials", label: "Eco-Friendly Materials" },
+      { href: "/sustainability/recyclable-packaging", label: "Recyclable Packaging" },
+      { href: "/sustainability/waste-management", label: "Waste Management" },
+      { href: "/sustainability/carbon-reduction", label: "Carbon Reduction" },
+      { href: "/sustainability/fsc-certification", label: "FSC Certification" },
+      { href: "/sustainability/environmental-policy", label: "Environmental Policy" },
+      { href: "/sustainability/csr-activities", label: "CSR Activities" },
     ],
   },
   {
@@ -39,7 +51,7 @@ export function Footer() {
   return (
     <footer className="mt-auto bg-charcoal-deep text-white/70">
       <div className="mx-auto max-w-6xl px-6 py-12">
-        <div className="grid gap-8 sm:grid-cols-3">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {columns.map((column) => (
             <div key={column.title}>
               <h3 className="font-display text-sm font-semibold text-white">{column.title}</h3>

@@ -163,3 +163,23 @@ export interface Certification {
   renewalDate: string;
   isSeedData: true;
 }
+
+export type EnvironmentalMetricCategory = "Waste Management" | "Carbon Reduction" | "Materials";
+
+export interface EnvironmentalMetric {
+  label: string;
+  value: string;
+  unit: string;
+  year: number;
+  target: string | null;
+  category: EnvironmentalMetricCategory;
+  isSeedData: true;
+}
+
+export interface CSRActivity {
+  slug: string;
+  title: string;
+  year: number;
+  description: string;
+  isSeedData: true;
+}
