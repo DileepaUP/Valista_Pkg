@@ -10,14 +10,14 @@ import type { Milestone } from "./types";
 export const milestones: Milestone[] = [
   {
     year: 1994,
-    title: "[SEED] Company Founded",
+    title: "Company Founded",
     description: "Sample data — company founded with a single-facer corrugator line.",
     type: "Founding",
     isSeedData: true,
   },
   {
     year: 2005,
-    title: "[SEED] Corrugator Line Expansion",
+    title: "Corrugator Line Expansion",
     description:
       "Sample data — installed a double-wall (BC-flute) capable corrugator to serve heavy-duty export cartons.",
     type: "Expansion",
@@ -25,7 +25,7 @@ export const milestones: Milestone[] = [
   },
   {
     year: 2012,
-    title: "[SEED] Flexographic Printing Added",
+    title: "Flexographic Printing Added",
     description:
       "Sample data — added in-line flexographic printing for pre-print retail and food-grade cartons.",
     type: "Expansion",
@@ -33,14 +33,14 @@ export const milestones: Milestone[] = [
   },
   {
     year: 2015,
-    title: "[SEED] ISO 9001 Certification",
+    title: "ISO 9001 Certification",
     description: "Sample data — achieved ISO 9001 Quality Management System certification.",
     type: "Certification",
     isSeedData: true,
   },
   {
     year: 2019,
-    title: "[SEED] FSC Chain of Custody Certification",
+    title: "FSC Chain of Custody Certification",
     description:
       "Sample data — achieved FSC Chain of Custody certification for sustainably sourced kraft liner.",
     type: "Sustainability",

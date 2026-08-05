@@ -9,7 +9,7 @@ import type { Certification } from "./types";
 
 export const certifications: Certification[] = [
   {
-    name: "[SEED] ISO 9001:2015 — Quality Management System",
+    name: "ISO 9001:2015 — Quality Management System",
     issuingBody: "SGS Lanka (Pvt) Ltd",
     certificationCode: "SAMPLE-QMS-LK-2024-0417",
     badgeImageUrl: "",
@@ -19,7 +19,7 @@ export const certifications: Certification[] = [
     isSeedData: true,
   },
   {
-    name: "[SEED] FSC Chain of Custody (FSC-STD-40-004)",
+    name: "FSC Chain of Custody (FSC-STD-40-004)",
     issuingBody: "Forest Stewardship Council",
     certificationCode: "SAMPLE-FSC-C0-2023-1108",
     badgeImageUrl: "",
@@ -29,7 +29,7 @@ export const certifications: Certification[] = [
     isSeedData: true,
   },
   {
-    name: "[SEED] HACCP — Food-Grade Packaging Hygiene",
+    name: "HACCP — Food-Grade Packaging Hygiene",
     issuingBody: "Bureau Veritas Lanka",
     certificationCode: "SAMPLE-HACCP-LK-2023-0901",
     badgeImageUrl: "",
@@ -39,7 +39,7 @@ export const certifications: Certification[] = [
     isSeedData: true,
   },
   {
-    name: "[SEED] GMP — Good Manufacturing Practice",
+    name: "GMP — Good Manufacturing Practice",
     issuingBody: "SGS Lanka (Pvt) Ltd",
     certificationCode: "SAMPLE-GMP-LK-2024-0915",
     badgeImageUrl: "",

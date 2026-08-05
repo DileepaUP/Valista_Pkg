@@ -7,11 +7,20 @@ export const INDUSTRIES = [
   "Industrial",
   "Electronics",
   "Promotional",
+  "Personal Care & Beauty",
 ] as const;
 
 export type Industry = (typeof INDUSTRIES)[number];
 
-export const BOX_TYPES = ["RSC", "Die-Cut", "Multiwall Sack", "Display/POS", "Custom"] as const;
+export const BOX_TYPES = [
+  "RSC",
+  "Die-Cut",
+  "Multiwall Sack",
+  "Display/POS",
+  "Custom",
+  "Partition",
+  "Tray",
+] as const;
 
 export type BoxType = (typeof BOX_TYPES)[number];
 
@@ -181,5 +190,45 @@ export interface CSRActivity {
   title: string;
   year: number;
   description: string;
+  isSeedData: true;
+}
+
+export const ARTICLE_CATEGORIES = ["Packaging Guides", "Sustainability", "Industry News"] as const;
+export type ArticleCategory = (typeof ARTICLE_CATEGORIES)[number];
+
+export interface Article {
+  slug: string;
+  title: string;
+  category: ArticleCategory;
+  excerpt: string;
+  body: string[];
+  coverImageUrl: string | null;
+  author: string;
+  publishedAt: string;
+}
+
+export interface Review {
+  customerName: string;
+  company: string;
+  industry: Industry;
+  rating: 1 | 2 | 3 | 4 | 5;
+  quote: string;
+  isSeedData: true;
+}
+
+export const EMPLOYMENT_TYPES = ["Full-Time", "Part-Time", "Contract", "Internship"] as const;
+export type EmploymentType = (typeof EMPLOYMENT_TYPES)[number];
+
+export interface JobOpening {
+  slug: string;
+  title: string;
+  department: string;
+  location: string;
+  employmentType: EmploymentType;
+  summary: string;
+  responsibilities: string[];
+  requirements: string[];
+  isOpen: boolean;
+  postedAt: string;
   isSeedData: true;
 }

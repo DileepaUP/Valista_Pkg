@@ -30,7 +30,13 @@ export function Nav() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
+          <a
+            href="tel:+94765887576"
+            className="hidden font-mono text-sm text-white/80 transition-colors hover:text-white lg:inline"
+          >
+            076 588 75 76
+          </a>
           <Button href="/contact" variant="secondary" className="hidden sm:inline-flex">
             Contact
           </Button>

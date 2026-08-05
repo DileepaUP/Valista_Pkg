@@ -5,12 +5,7 @@ const columns = [
     title: "Company",
     links: [
       { href: "/our-company", label: "About Us" },
-      { href: "/our-company/history", label: "Our History" },
-      { href: "/our-company/mission-vision", label: "Mission & Vision" },
       { href: "/our-company/leadership", label: "Leadership Team" },
-      { href: "/our-company/why-choose-us", label: "Why Choose Us" },
-      { href: "/our-company/manufacturing-process", label: "Manufacturing Process" },
-      { href: "/our-company/facilities", label: "Factory / Facilities" },
       { href: "/our-company/certifications", label: "Certifications & Policies" },
       { href: "/our-company/awards", label: "Awards & Recognition" },
     ],
@@ -20,19 +15,14 @@ const columns = [
     links: [
       { href: "/products", label: "Browse Products" },
       { href: "/case-studies", label: "Case Studies" },
+      { href: "/resources", label: "Resources" },
     ],
   },
   {
     title: "Sustainability",
     links: [
       { href: "/sustainability", label: "Overview" },
-      { href: "/sustainability/eco-friendly-materials", label: "Eco-Friendly Materials" },
-      { href: "/sustainability/recyclable-packaging", label: "Recyclable Packaging" },
-      { href: "/sustainability/waste-management", label: "Waste Management" },
-      { href: "/sustainability/carbon-reduction", label: "Carbon Reduction" },
       { href: "/sustainability/fsc-certification", label: "FSC Certification" },
-      { href: "/sustainability/environmental-policy", label: "Environmental Policy" },
-      { href: "/sustainability/csr-activities", label: "CSR Activities" },
     ],
   },
   {

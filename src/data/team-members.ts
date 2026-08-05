@@ -9,7 +9,7 @@ import type { TeamMember } from "./types";
 export const teamMembers: TeamMember[] = [
   {
     slug: "sample-leader-001",
-    name: "[SEED] R. Wickramasinghe",
+    name: "R. Wickramasinghe",
     role: "Managing Director",
     photoUrl: null,
     bio: "Sample bio — oversees overall company strategy, client relationships, and long-term capacity planning.",
@@ -17,7 +17,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     slug: "sample-leader-002",
-    name: "[SEED] N. Jayawardena",
+    name: "N. Jayawardena",
     role: "Head of Corrugation & Production",
     photoUrl: null,
     bio: "Sample bio — oversees the corrugator line, flexo printing, and die-cutting operations.",
@@ -25,7 +25,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     slug: "sample-leader-003",
-    name: "[SEED] D. Silva",
+    name: "D. Silva",
     role: "Quality & Compliance Manager (ISO 9001 / FSC CoC / HACCP)",
     photoUrl: null,
     bio: "Sample bio — owns certification renewals and board/ECT testing against customer specs.",
@@ -33,7 +33,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     slug: "sample-leader-004",
-    name: "[SEED] K. Fernando",
+    name: "K. Fernando",
     role: "Key Accounts & Export Sales Director",
     photoUrl: null,
     bio: "Sample bio — manages major accounts and export freight customers across Asia and the Middle East.",

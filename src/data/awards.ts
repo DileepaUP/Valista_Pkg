@@ -5,7 +5,7 @@ import type { Award } from "./types";
 export const awards: Award[] = [
   {
     slug: "sample-award-001",
-    name: "[SEED] National Packaging Excellence Award",
+    name: "National Packaging Excellence Award",
     issuingBody: "Sample data — e.g. National Chamber of Exporters",
     year: 2023,
     description: "Sample data — recognized for export carton design and quality consistency.",

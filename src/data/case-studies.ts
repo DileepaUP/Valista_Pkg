@@ -11,7 +11,7 @@ import type { CaseStudy } from "./types";
 export const caseStudies: CaseStudy[] = [
   {
     slug: "sample-case-study-001",
-    title: "[SEED] Export Carton Damage Reduction — Sample Case Study",
+    title: "Export Carton Damage Reduction — Sample Case Study",
     industries: ["Industrial", "Electronics"],
     summary: {
       problem: "Export company needed stronger boxes for overseas freight.",
@@ -33,7 +33,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "sample-case-study-002",
-    title: "[SEED] Pallet Cube Utilization — Sample Case Study",
+    title: "Pallet Cube Utilization — Sample Case Study",
     industries: ["Food & Beverage"],
     summary: {
       problem: "Carton size wasted pallet space, inflating freight cost.",

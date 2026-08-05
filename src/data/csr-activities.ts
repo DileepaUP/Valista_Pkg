@@ -6,14 +6,14 @@ import type { CSRActivity } from "./types";
 export const csrActivities: CSRActivity[] = [
   {
     slug: "sample-csr-activity-001",
-    title: "[SEED] School Recycling Awareness Program",
+    title: "School Recycling Awareness Program",
     year: 2025,
     description: "Sample data — a school outreach program on paper recycling and waste sorting, run with local partners.",
     isSeedData: true,
   },
   {
     slug: "sample-csr-activity-002",
-    title: "[SEED] Local Community Tree Planting Drive",
+    title: "Local Community Tree Planting Drive",
     year: 2024,
     description: "Sample data — an annual tree planting initiative supporting fiber sourcing regions.",
     isSeedData: true,
