@@ -26,6 +26,9 @@ const ibmPlexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "Valista Packaging",
   description: "Corrugated packaging manufacturer — spec-rich products, real certifications, and a fast quote tool.",
+  icons: {
+    icon: "/icon",
+  },
 };
 
 export default function RootLayout({

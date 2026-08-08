@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Logo } from "@/components/signature/Logo";
 
 const columns = [
   {
@@ -41,6 +42,8 @@ export function Footer() {
   return (
     <footer className="mt-auto bg-charcoal-deep text-white/70">
       <div className="mx-auto max-w-6xl px-6 py-12">
+        <Logo className="mb-10" />
+
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {columns.map((column) => (
             <div key={column.title}>

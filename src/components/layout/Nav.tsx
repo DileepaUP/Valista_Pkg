@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { Logo } from "@/components/signature/Logo";
 
 const links = [
   { href: "/our-company", label: "Our Company" },
@@ -19,8 +20,8 @@ export function Nav() {
   return (
     <header className="sticky top-0 z-50 bg-charcoal text-white">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
-        <Link href="/" className="whitespace-nowrap font-display text-lg font-semibold">
-          Valista Packaging
+        <Link href="/" aria-label="Valista Packaging home">
+          <Logo />
         </Link>
 
         <nav className="hidden gap-5 xl:flex">
