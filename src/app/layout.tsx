@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter, IBM_Plex_Mono } from "next/font/google";
-import { Nav } from "@/components/layout/Nav";
-import { Footer } from "@/components/layout/Footer";
-import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -31,6 +28,10 @@ export const metadata: Metadata = {
   },
 };
 
+// Root layout only owns <html>/<body> + fonts, shared by both the public
+// site and the admin CMS. Nav/Footer/WhatsAppButton live in
+// (public)/layout.tsx so /admin/* never inherits them — see the CMS
+// implementation plan §2 (admin needs its own shell, not the public chrome).
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -41,12 +42,7 @@ export default function RootLayout({
       lang="en"
       className={`${spaceGrotesk.variable} ${inter.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-body">
-        <Nav />
-        <main className="flex flex-1 flex-col">{children}</main>
-        <Footer />
-        <WhatsAppButton />
-      </body>
+      <body className="min-h-full flex flex-col font-body">{children}</body>
     </html>
   );
 }

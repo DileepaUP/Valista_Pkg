@@ -52,4 +52,71 @@ model ContactMessage {
   message     String
 
   emailSentAt DateTime?
+  handled     Boolean   @default(false)
+}
+
+// --- Admin CMS auth (see docs/Admin_CMS_Implementation_Plan.pdf §4) ---
+// DB-backed sessions rather than a JWT/OAuth library: small admin team,
+// sessions need to be trivially revocable (delete the row), and this avoids
+// pulling in an auth framework for what's effectively 1-2 users.
+model AdminUser {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  name         String
+  createdAt    DateTime  @default(now())
+  sessions     Session[]
+}
+
+model Session {
+  id        String    @id @default(cuid())
+  token     String    @unique
+  user      AdminUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  expiresAt DateTime
+  createdAt DateTime  @default(now())
+}
+
+// --- CMS content models ---
+// Field names/shapes mirror src/data/types.ts's Product interface directly
+// (see Admin_CMS_Implementation_Plan.pdf §5.1 — "based on the existing
+// TypeScript interfaces ... do not invent unnecessary fields"). isSeedData
+// is replaced by isPublished: nothing goes live until an admin publishes it.
+model Product {
+  id                  String   @id @default(cuid())
+  slug                String   @unique
+  name                String
+  categories          String[]
+  industries          String[]
+  boxType             String
+  shortDescription    String
+  description         String
+  applications        String[]
+  features            String[]
+  fluteType           String
+  wallType            String
+  boardGrade          String
+  ectRatingKnM        Float
+  burstStrengthKpa    Float
+  maxStackLoadKg      Float
+  printingOptions     String[]
+  moq                 String
+  specSheetUrl        String?
+  images              String[]
+  relatedProductSlugs String[]
+  isPublished         Boolean  @default(false)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  standardSizes ProductStandardSize[]
+}
+
+model ProductStandardSize {
+  id        String  @id @default(cuid())
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId String
+  label     String
+  lengthMm  Int
+  widthMm   Int
+  depthMm   Int
 }

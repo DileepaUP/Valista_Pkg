@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/Button";
 import { FluteWave } from "@/components/signature/FluteWave";
 import { Reveal } from "@/components/ui/Reveal";
 import { CountUpStat } from "@/components/ui/CountUpStat";
-import { products } from "@/data/products";
+import { getProducts } from "@/lib/queries/products";
 import { articles } from "@/data/articles";
 import { reviews } from "@/data/reviews";
 import { INDUSTRIES, PRODUCT_CATEGORIES } from "@/data/types";
@@ -11,12 +11,6 @@ import { INDUSTRIES, PRODUCT_CATEGORIES } from "@/data/types";
 const latestArticles = [...articles]
   .sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1))
   .slice(0, 3);
-
-// Featured on the homepage spec-sheet teaser (§ below) to make the "we
-// publish real data" claim visible immediately, not just via a CTA —
-// neither competitor referenced in docs/CLAUDE.md §2 surfaces spec data
-// this prominently.
-const teaserProduct = products[0];
 
 // SAMPLE DATA — per docs/CLAUDE.md §9, these stats are illustrative sample
 // values, not verified figures, and must be replaced with real,
@@ -28,7 +22,13 @@ const stats = [
   { label: "Export countries", value: "12" },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const products = await getProducts();
+  // Featured on the homepage spec-sheet teaser to make the "we publish real
+  // data" claim visible immediately, not just via a CTA — neither competitor
+  // referenced in docs/CLAUDE.md §2 surfaces spec data this prominently.
+  const teaserProduct = products[0];
+
   return (
     <div className="flex flex-1 flex-col">
       <section className="relative overflow-hidden bg-charcoal text-white">

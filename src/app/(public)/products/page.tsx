@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { products } from "@/data/products";
+import { getProducts } from "@/lib/queries/products";
 import { PRODUCT_CATEGORIES } from "@/data/types";
 
 export default async function ProductsPage({
@@ -7,7 +7,7 @@ export default async function ProductsPage({
 }: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
-  const resolvedSearchParams = await searchParams;
+  const [resolvedSearchParams, products] = await Promise.all([searchParams, getProducts()]);
   const category =
     typeof resolvedSearchParams.category === "string" ? resolvedSearchParams.category : undefined;
   const industry =

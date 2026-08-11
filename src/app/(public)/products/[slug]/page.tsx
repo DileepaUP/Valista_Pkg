@@ -1,9 +1,10 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getProductBySlug, products } from "@/data/products";
+import { getProductBySlug, getProducts } from "@/lib/queries/products";
 import { Button } from "@/components/ui/Button";
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const products = await getProducts();
   return products.map((p) => ({ slug: p.slug }));
 }
 
@@ -13,12 +14,12 @@ export default async function ProductDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
+  const product = await getProductBySlug(slug);
   if (!product) notFound();
 
-  const relatedProducts = product.relatedProductSlugs
-    .map((slug) => getProductBySlug(slug))
-    .filter((p): p is NonNullable<typeof p> => Boolean(p));
+  const relatedProducts = (
+    await Promise.all(product.relatedProductSlugs.map((s) => getProductBySlug(s)))
+  ).filter((p): p is NonNullable<typeof p> => Boolean(p));
 
   return (
     <div className="mx-auto w-full max-w-4xl px-6 py-16">
