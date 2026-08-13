@@ -1,9 +1,10 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { getCaseStudyBySlug, caseStudies } from "@/data/case-studies";
+import { getCaseStudyBySlug, getPublishableCaseStudies } from "@/lib/queries/case-studies";
 
-export function generateStaticParams() {
-  return caseStudies.filter((c) => c.isVerified).map((c) => ({ slug: c.slug }));
+export async function generateStaticParams() {
+  const caseStudies = await getPublishableCaseStudies();
+  return caseStudies.map((c) => ({ slug: c.slug }));
 }
 
 export default async function CaseStudyDetailPage({
@@ -12,11 +13,12 @@ export default async function CaseStudyDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const caseStudy = getCaseStudyBySlug(slug);
+  const caseStudy = await getCaseStudyBySlug(slug);
 
-  // Unverified case studies are never rendered publicly — see docs/CLAUDE.md §9
-  // ("real, verified figures only") and src/data/types.ts's isVerified field.
-  if (!caseStudy || !caseStudy.isVerified) notFound();
+  // Unverified/unpublished case studies are never rendered publicly — the
+  // query already filters both, this is a defensive backstop (see
+  // docs/CLAUDE.md §9, "real, verified figures only").
+  if (!caseStudy) notFound();
 
   return (
     <div className="mx-auto w-full max-w-3xl px-6 py-16">
@@ -31,11 +33,11 @@ export default async function CaseStudyDetailPage({
 
       {/* At-a-glance Problem → Solution → Result chain */}
       <div className="mt-8 flex flex-col gap-3 rounded-lg border border-sand-deep bg-sand p-6 sm:flex-row sm:items-center">
-        <FlowStep label="Problem" text={caseStudy.summary.problem} />
+        <FlowStep label="Problem" text={caseStudy.summaryProblem} />
         <FlowArrow />
-        <FlowStep label="Solution" text={caseStudy.summary.solution} />
+        <FlowStep label="Solution" text={caseStudy.summarySolution} />
         <FlowArrow />
-        <FlowStep label="Result" text={caseStudy.summary.result} accent />
+        <FlowStep label="Result" text={caseStudy.summaryResult} accent />
       </div>
 
       <section className="mt-10">

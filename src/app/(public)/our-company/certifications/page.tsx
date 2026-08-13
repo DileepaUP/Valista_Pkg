@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { certifications, getCertificationStatus } from "@/data/certifications";
+import { getCertifications, getCertificationStatus } from "@/lib/queries/certifications";
 
 export const metadata: Metadata = {
   title: "Certifications & Policies — Valista Packaging",
@@ -11,7 +11,9 @@ const statusClasses: Record<string, string> = {
   Expired: "bg-charcoal/10 text-charcoal/60",
 };
 
-export default function CertificationsPage() {
+export default async function CertificationsPage() {
+  const certifications = await getCertifications();
+
   return (
     <div className="mx-auto w-full max-w-4xl px-6 py-16">
       <h1 className="font-display text-3xl font-semibold text-charcoal">
@@ -38,11 +40,11 @@ export default function CertificationsPage() {
               <dl className="mt-4 space-y-1 font-mono text-xs text-charcoal/60">
                 <div className="flex justify-between">
                   <dt>Issued</dt>
-                  <dd>{cert.issueDate}</dd>
+                  <dd>{cert.issueDate.toISOString().slice(0, 10)}</dd>
                 </div>
                 <div className="flex justify-between">
                   <dt>Renewal</dt>
-                  <dd>{cert.renewalDate}</dd>
+                  <dd>{cert.renewalDate.toISOString().slice(0, 10)}</dd>
                 </div>
               </dl>
               {cert.pdfUrl && (

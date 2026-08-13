@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import { teamMembers } from "@/data/team-members";
+import { getTeamMembers } from "@/lib/queries/team-members";
 
 export const metadata: Metadata = {
   title: "Leadership Team — Valista Packaging",
 };
 
-export default function LeadershipPage() {
+export default async function LeadershipPage() {
+  const teamMembers = await getTeamMembers();
+
   return (
     <div className="mx-auto w-full max-w-4xl px-6 py-16">
       <h1 className="font-display text-3xl font-semibold text-charcoal">Leadership Team</h1>

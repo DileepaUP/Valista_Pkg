@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { ProductForm } from "@/components/admin/ProductForm";
-import { DeleteProductButton } from "@/components/admin/DeleteProductButton";
+import { DeleteButton } from "@/components/admin/DeleteButton";
 import { updateProduct, deleteProduct } from "../../actions";
 
 export default async function EditProductPage({ params }: { params: Promise<{ id: string }> }) {
@@ -20,7 +20,7 @@ export default async function EditProductPage({ params }: { params: Promise<{ id
     <div>
       <div className="flex items-center justify-between">
         <h1 className="font-display text-2xl font-semibold text-charcoal">Edit Product</h1>
-        <DeleteProductButton action={boundDelete} />
+        <DeleteButton action={boundDelete} label="Delete Product" />
       </div>
       <div className="mt-6">
         <ProductForm

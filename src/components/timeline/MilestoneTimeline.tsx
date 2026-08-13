@@ -1,11 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import type { Milestone, MilestoneType } from "@/data/types";
 
-const TYPES: MilestoneType[] = ["Founding", "Expansion", "Certification", "Award", "Sustainability"];
+const TYPES = ["Founding", "Expansion", "Certification", "Award", "Sustainability"] as const;
+type MilestoneType = (typeof TYPES)[number];
 
-export function MilestoneTimeline({ milestones }: { milestones: Milestone[] }) {
+// Loosened from the old @/data/types Milestone shape to a generic structural
+// type — this component now renders DB-backed rows (type: string from
+// Prisma) as well as, previously, the static data's literal-union type.
+interface MilestoneLike {
+  year: number;
+  title: string;
+  description: string;
+  type: string;
+}
+
+export function MilestoneTimeline({ milestones }: { milestones: MilestoneLike[] }) {
   const [activeType, setActiveType] = useState<MilestoneType | null>(null);
 
   const visible = milestones

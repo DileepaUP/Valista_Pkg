@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
-import { milestones } from "@/data/milestones";
+import { getMilestones } from "@/lib/queries/milestones";
 import { MilestoneTimeline } from "@/components/timeline/MilestoneTimeline";
 
 export const metadata: Metadata = {
   title: "Our History — Valista Packaging",
 };
 
-export default function HistoryPage() {
+export default async function HistoryPage() {
+  const milestones = await getMilestones();
+
   return (
     <div className="mx-auto w-full max-w-4xl px-6 py-16">
       <h1 className="font-display text-3xl font-semibold text-charcoal">Our History</h1>

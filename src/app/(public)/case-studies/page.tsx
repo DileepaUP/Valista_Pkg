@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { getPublishableCaseStudies } from "@/data/case-studies";
+import { getPublishableCaseStudies } from "@/lib/queries/case-studies";
 
 export const metadata: Metadata = {
   title: "Case Studies — Valista Packaging",
@@ -11,10 +11,8 @@ export default async function CaseStudiesPage({
 }: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
-  const resolved = await searchParams;
+  const [resolved, published] = await Promise.all([searchParams, getPublishableCaseStudies()]);
   const industry = typeof resolved.industry === "string" ? resolved.industry : undefined;
-
-  const published = getPublishableCaseStudies();
   const industries = Array.from(new Set(published.flatMap((c) => c.industries)));
   const filtered = published.filter((c) => !industry || c.industries.includes(industry as (typeof c.industries)[number]));
 
@@ -51,9 +49,9 @@ export default async function CaseStudiesPage({
             className="rounded-lg border border-sand-deep bg-white p-6 transition-shadow hover:shadow-md"
           >
             <p className="font-display text-lg font-medium text-charcoal">{cs.title}</p>
-            <p className="mt-3 text-sm text-charcoal/70">{cs.summary.problem}</p>
-            <p className="mt-1 text-sm text-charcoal/50">&rarr; {cs.summary.solution}</p>
-            <p className="mt-1 text-sm font-medium text-green">&rarr; {cs.summary.result}</p>
+            <p className="mt-3 text-sm text-charcoal/70">{cs.summaryProblem}</p>
+            <p className="mt-1 text-sm text-charcoal/50">&rarr; {cs.summarySolution}</p>
+            <p className="mt-1 text-sm font-medium text-green">&rarr; {cs.summaryResult}</p>
           </Link>
         ))}
         {filtered.length === 0 && (

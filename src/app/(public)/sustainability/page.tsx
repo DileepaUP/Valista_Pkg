@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { certifications, getCertificationStatus } from "@/data/certifications";
+import { getFscCertification, getCertificationStatus } from "@/lib/queries/certifications";
 import { environmentalMetrics } from "@/data/environmental-metrics";
 
 export const metadata: Metadata = {
@@ -23,8 +23,8 @@ const statusClasses: Record<string, string> = {
   Expired: "bg-charcoal/10 text-charcoal/60",
 };
 
-export default function SustainabilityPage() {
-  const fsc = certifications.find((c) => c.certificationCode.includes("FSC"));
+export default async function SustainabilityPage() {
+  const fsc = await getFscCertification();
 
   return (
     <div className="mx-auto w-full max-w-4xl px-6 py-16">

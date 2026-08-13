@@ -8,7 +8,12 @@
     "start": "next start",
     "lint": "eslint",
     "create-admin": "tsx --env-file=.env scripts/create-admin.ts",
-    "seed-products": "tsx --env-file=.env scripts/seed-products.ts"
+    "seed-products": "tsx --env-file=.env scripts/seed-products.ts",
+    "seed-case-studies": "tsx --env-file=.env scripts/seed-case-studies.ts",
+    "seed-certifications": "tsx --env-file=.env scripts/seed-certifications.ts",
+    "seed-team-members": "tsx --env-file=.env scripts/seed-team-members.ts",
+    "seed-milestones": "tsx --env-file=.env scripts/seed-milestones.ts",
+    "seed-awards": "tsx --env-file=.env scripts/seed-awards.ts"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.9.0",

@@ -120,3 +120,95 @@ model ProductStandardSize {
   widthMm   Int
   depthMm   Int
 }
+
+// CaseStudySummary (problem/solution/result) is flattened to scalar columns
+// since Postgres/Prisma has no first-class embedded-object type here.
+// isVerified is kept SEPARATE from isPublished (unlike Product) — this is
+// the load-bearing rule from docs/CLAUDE.md §9: a case study can never go
+// live unless it's both verified AND published. Enforced in the Server
+// Action, not just the schema.
+model CaseStudy {
+  id              String   @id @default(cuid())
+  slug            String   @unique
+  title           String
+  industries      String[]
+  summaryProblem  String
+  summarySolution String
+  summaryResult   String
+  challenge       String
+  solution        String
+  clientQuote     String?
+  clientName      String?
+  clientCompany   String?
+  images          String[]
+  isVerified      Boolean  @default(false)
+  isPublished     Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  results CaseStudyResultMetric[]
+}
+
+model CaseStudyResultMetric {
+  id          String    @id @default(cuid())
+  caseStudy   CaseStudy @relation(fields: [caseStudyId], references: [id], onDelete: Cascade)
+  caseStudyId String
+  label       String
+  value       String
+  unit        String?
+}
+
+// Status (Active/RenewingSoon/Expired) is deliberately NOT stored — it's
+// computed at read time from renewalDate (see getCertificationStatus in the
+// query module), matching the original static-data behavior and the site's
+// "live-feeling status, not static prose" requirement.
+model Certification {
+  id                String   @id @default(cuid())
+  name              String
+  issuingBody       String
+  certificationCode String   @unique
+  badgeImageUrl     String?
+  pdfUrl            String?
+  issueDate         DateTime
+  renewalDate       DateTime
+  isPublished       Boolean  @default(false)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model TeamMember {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  role        String
+  photoUrl    String?
+  bio         String
+  sortOrder   Int      @default(0)
+  isPublished Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Milestone {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  year        Int
+  title       String
+  description String
+  type        String
+  isPublished Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Award {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  issuingBody String
+  year        Int
+  description String
+  isPublished Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

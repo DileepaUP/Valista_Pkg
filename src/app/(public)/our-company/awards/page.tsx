@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import { awards } from "@/data/awards";
+import { getAwards } from "@/lib/queries/awards";
 
 export const metadata: Metadata = {
   title: "Awards & Recognition — Valista Packaging",
 };
 
-export default function AwardsPage() {
+export default async function AwardsPage() {
+  const awards = await getAwards();
+
   return (
     <div className="mx-auto w-full max-w-4xl px-6 py-16">
       <h1 className="font-display text-3xl font-semibold text-charcoal">Awards &amp; Recognition</h1>

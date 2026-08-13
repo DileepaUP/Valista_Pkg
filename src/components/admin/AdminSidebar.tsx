@@ -8,6 +8,10 @@ const links = [
   { href: "/admin", label: "Dashboard" },
   { href: "/admin/products", label: "Products" },
   { href: "/admin/case-studies", label: "Case Studies" },
+  { href: "/admin/certifications", label: "Certifications" },
+  { href: "/admin/team-members", label: "Team Members" },
+  { href: "/admin/milestones", label: "Milestones" },
+  { href: "/admin/awards", label: "Awards" },
   { href: "/admin/rfq", label: "RFQ Inbox" },
   { href: "/admin/contacts", label: "Messages" },
 ];

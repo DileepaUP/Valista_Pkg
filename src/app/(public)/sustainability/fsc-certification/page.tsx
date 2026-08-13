@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { certifications, getCertificationStatus } from "@/data/certifications";
+import { getFscCertification, getCertificationStatus } from "@/lib/queries/certifications";
 import { circularEconomyInitiatives } from "@/data/sustainability-content";
 
 export const metadata: Metadata = {
@@ -12,8 +12,8 @@ const statusClasses: Record<string, string> = {
   Expired: "bg-charcoal/10 text-charcoal/60",
 };
 
-export default function FscCertificationPage() {
-  const fsc = certifications.find((c) => c.certificationCode.includes("FSC"));
+export default async function FscCertificationPage() {
+  const fsc = await getFscCertification();
 
   return (
     <div className="mx-auto w-full max-w-3xl px-6 py-16">
@@ -38,11 +38,11 @@ export default function FscCertificationPage() {
           <dl className="mt-4 space-y-1 font-mono text-xs text-charcoal/60">
             <div className="flex justify-between">
               <dt>Issued</dt>
-              <dd>{fsc.issueDate}</dd>
+              <dd>{fsc.issueDate.toISOString().slice(0, 10)}</dd>
             </div>
             <div className="flex justify-between">
               <dt>Renewal</dt>
-              <dd>{fsc.renewalDate}</dd>
+              <dd>{fsc.renewalDate.toISOString().slice(0, 10)}</dd>
             </div>
           </dl>
         </div>

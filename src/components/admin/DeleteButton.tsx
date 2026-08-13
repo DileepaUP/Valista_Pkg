@@ -1,11 +1,11 @@
 "use client";
 
-export function DeleteProductButton({ action }: { action: () => Promise<void> }) {
+export function DeleteButton({ action, label }: { action: () => Promise<void>; label: string }) {
   return (
     <form
       action={action}
       onSubmit={(e) => {
-        if (!confirm("Delete this product? This cannot be undone.")) {
+        if (!confirm(`${label}? This cannot be undone.`)) {
           e.preventDefault();
         }
       }}
@@ -14,7 +14,7 @@ export function DeleteProductButton({ action }: { action: () => Promise<void> })
         type="submit"
         className="rounded-md border border-terracotta px-4 py-2 text-sm font-medium text-terracotta transition-colors hover:bg-terracotta/10"
       >
-        Delete Product
+        {label}
       </button>
     </form>
   );
