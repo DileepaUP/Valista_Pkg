@@ -1,13 +1,13 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { getOpenJobs } from "@/data/job-openings";
+import { getOpenJobs } from "@/lib/queries/job-openings";
 
 export const metadata: Metadata = {
   title: "Careers — Valista Packaging",
 };
 
-export default function CareersPage() {
-  const jobs = getOpenJobs();
+export default async function CareersPage() {
+  const jobs = await getOpenJobs();
   const departments = Array.from(new Set(jobs.map((j) => j.department)));
 
   return (

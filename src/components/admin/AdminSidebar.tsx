@@ -12,6 +12,9 @@ const links = [
   { href: "/admin/team-members", label: "Team Members" },
   { href: "/admin/milestones", label: "Milestones" },
   { href: "/admin/awards", label: "Awards" },
+  { href: "/admin/articles", label: "Articles" },
+  { href: "/admin/job-openings", label: "Job Openings" },
+  { href: "/admin/reviews", label: "Reviews" },
   { href: "/admin/rfq", label: "RFQ Inbox" },
   { href: "/admin/contacts", label: "Messages" },
 ];

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { articles } from "@/data/articles";
+import { getArticlesByCategory } from "@/lib/queries/articles";
 import { ARTICLE_CATEGORIES } from "@/data/types";
 
 export const metadata: Metadata = {
@@ -15,9 +15,7 @@ export default async function ResourcesPage({
   const resolved = await searchParams;
   const category = typeof resolved.category === "string" ? resolved.category : undefined;
 
-  const filtered = articles
-    .filter((a) => !category || a.category === category)
-    .sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1));
+  const filtered = await getArticlesByCategory(category);
 
   return (
     <div className="mx-auto w-full max-w-4xl px-6 py-16">
@@ -53,7 +51,7 @@ export default async function ResourcesPage({
             <p className="mt-2 font-display text-lg font-medium text-charcoal">{article.title}</p>
             <p className="mt-2 text-sm text-charcoal/60">{article.excerpt}</p>
             <p className="mt-3 text-xs text-charcoal/40">
-              {article.author} &middot; {article.publishedAt}
+              {article.author} &middot; {article.publishedAt.toISOString().slice(0, 10)}
             </p>
           </Link>
         ))}

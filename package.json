@@ -13,7 +13,10 @@
     "seed-certifications": "tsx --env-file=.env scripts/seed-certifications.ts",
     "seed-team-members": "tsx --env-file=.env scripts/seed-team-members.ts",
     "seed-milestones": "tsx --env-file=.env scripts/seed-milestones.ts",
-    "seed-awards": "tsx --env-file=.env scripts/seed-awards.ts"
+    "seed-awards": "tsx --env-file=.env scripts/seed-awards.ts",
+    "seed-articles": "tsx --env-file=.env scripts/seed-articles.ts",
+    "seed-job-openings": "tsx --env-file=.env scripts/seed-job-openings.ts",
+    "seed-reviews": "tsx --env-file=.env scripts/seed-reviews.ts"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.9.0",

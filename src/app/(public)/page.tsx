@@ -4,13 +4,9 @@ import { FluteWave } from "@/components/signature/FluteWave";
 import { Reveal } from "@/components/ui/Reveal";
 import { CountUpStat } from "@/components/ui/CountUpStat";
 import { getProducts } from "@/lib/queries/products";
-import { articles } from "@/data/articles";
-import { reviews } from "@/data/reviews";
+import { getArticles } from "@/lib/queries/articles";
+import { getReviews } from "@/lib/queries/reviews";
 import { INDUSTRIES, PRODUCT_CATEGORIES } from "@/data/types";
-
-const latestArticles = [...articles]
-  .sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1))
-  .slice(0, 3);
 
 // SAMPLE DATA — per docs/CLAUDE.md §9, these stats are illustrative sample
 // values, not verified figures, and must be replaced with real,
@@ -28,6 +24,11 @@ export default async function Home() {
   // data" claim visible immediately, not just via a CTA — neither competitor
   // referenced in docs/CLAUDE.md §2 surfaces spec data this prominently.
   const teaserProduct = products[0];
+
+  const allArticles = await getArticles();
+  const latestArticles = allArticles.slice(0, 3);
+
+  const reviews = await getReviews();
 
   return (
     <div className="flex flex-1 flex-col">

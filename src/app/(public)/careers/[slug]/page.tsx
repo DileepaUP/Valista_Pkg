@@ -1,9 +1,10 @@
 import { notFound } from "next/navigation";
-import { getJobBySlug, jobOpenings } from "@/data/job-openings";
+import { getJobBySlug, getOpenJobs } from "@/lib/queries/job-openings";
 import { Button } from "@/components/ui/Button";
 
-export function generateStaticParams() {
-  return jobOpenings.filter((j) => j.isOpen).map((j) => ({ slug: j.slug }));
+export async function generateStaticParams() {
+  const jobs = await getOpenJobs();
+  return jobs.map((j) => ({ slug: j.slug }));
 }
 
 export default async function JobDetailPage({
@@ -12,8 +13,8 @@ export default async function JobDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const job = getJobBySlug(slug);
-  if (!job || !job.isOpen) notFound();
+  const job = await getJobBySlug(slug);
+  if (!job) notFound();
 
   const mailtoHref = `mailto:careers@valista.lk?subject=${encodeURIComponent(`Application: ${job.title}`)}`;
 
@@ -22,7 +23,7 @@ export default async function JobDetailPage({
       <p className="font-mono text-xs text-steel">{job.department}</p>
       <h1 className="mt-2 font-display text-3xl font-semibold text-charcoal">{job.title}</h1>
       <p className="mt-2 text-sm text-charcoal/50">
-        {job.location} &middot; {job.employmentType} &middot; Posted {job.postedAt}
+        {job.location} &middot; {job.employmentType} &middot; Posted {job.postedAt.toISOString().slice(0, 10)}
       </p>
 
       <p className="mt-6 text-charcoal/70">{job.summary}</p>
