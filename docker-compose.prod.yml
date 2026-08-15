@@ -1,0 +1,47 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: valista-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: valista_user
+      POSTGRES_PASSWORD: valista_password
+      POSTGRES_DB: valista_db
+    volumes:
+      - valista-postgres-data:/var/lib/postgresql/data
+    # No host port mapping — Postgres should never be reachable from outside
+    # the VPS. The app container reaches it over the internal compose network
+    # by service name ("postgres"), same as before.
+
+  app:
+    build: .
+    container_name: valista-app
+    restart: always
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgresql://valista_user:valista_password@postgres:5432/valista_db
+      NODE_ENV: production
+    # No host port mapping either — only Caddy is exposed publicly. Caddy
+    # reaches this container over the internal network by service name ("app").
+    expose:
+      - "3000"
+
+  caddy:
+    image: caddy:2-alpine
+    container_name: valista-caddy
+    restart: always
+    depends_on:
+      - app
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+
+volumes:
+  valista-postgres-data:
+  caddy-data:
+  caddy-config:
